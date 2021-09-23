@@ -1,0 +1,24 @@
+html {
+    background: url(img/galaxy.jpg) no-repeat center fixed;
+    background-size: cover;
+}
+
+body {
+    background: rgba(255, 255, 255, 0.7);
+    text-align: left;
+    padding: 25px 50px;
+    width: 700px;
+    margin: 25px auto;
+    border-radius: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+    display: block;
+    margin: auto;
+    cursor: pointer;
+}
+
+#answerPar {
+    color: lime;
+}

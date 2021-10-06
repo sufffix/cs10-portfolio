@@ -112,6 +112,8 @@ function startGame() {
             stage1();
         } else if (ans == "go east") {
             startGame();
+        } else if (ans == "go north") {
+            
         }
         
     }

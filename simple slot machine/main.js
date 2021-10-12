@@ -21,6 +21,8 @@ let ran1; let ran2; let ran3;
 
 // add event listener
 document.getElementById("spin").addEventListener("click", spin);
+document.getElementById("spin10").addEventListener("click", spin10);
+
 
 // event functions
 function spin() {
@@ -29,39 +31,22 @@ function spin() {
     ran2 = Math.random();
     ran3 = Math.random();
 
-
-    
-
     // check if any slots are the same
 
     if (score > 9) {
         randomSlot();
-        if (img1.src == img2.src && img2.src != img3.src) {
-            score += 40;
-            score -= 20;
-            scoreEl.innerHTML = score;
-        } else if (img2.src == img3.src && img1.src != img2.src) {
-            score += 40;
-            score -= 20;
-            scoreEl.innerHTML = score;
-        } else if (img3.src == img1.src && img1.src != img2.src) {
-            score += 40;
-            score -= 20;
-            scoreEl.innerHTML = score;
-        } else if (img1.src == img2.src && img2.src == img3.src) {
-            score += 1000;
-            score -= 20;
-            scoreEl.innerHTML = score;
-            alert("Jackpot!");
-        } else {
-            score -= 20;
-            scoreEl.innerHTML = score;
-        }
     } else {
         alert("You dont have enough money!")
         scoreEl.innerHTML = score;
     }    
     
+}
+
+function spin10() {
+    for (let i = 1; i <= 10; i++) {
+        spin();
+        console.log("spin");
+    }
 }
 
 function randomSlot() {
@@ -117,5 +102,27 @@ function randomSlot() {
         img3.src=orange;
     } else {
         img3.src=watermelon;
+    }
+
+    if (img1.src == img2.src && img2.src != img3.src) {
+        score += 40;
+        score -= 20;
+        scoreEl.innerHTML = score;
+    } else if (img2.src == img3.src && img1.src != img2.src) {
+        score += 40;
+        score -= 20;
+        scoreEl.innerHTML = score;
+    } else if (img3.src == img1.src && img1.src != img2.src) {
+        score += 40;
+        score -= 20;
+        scoreEl.innerHTML = score;
+    } else if (img1.src == img2.src && img2.src == img3.src) {
+        score += 1000;
+        score -= 20;
+        scoreEl.innerHTML = score;
+        alert("Jackpot!");
+    } else {
+        score -= 20;
+        scoreEl.innerHTML = score;
     }
 }

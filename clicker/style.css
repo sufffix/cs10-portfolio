@@ -1,0 +1,63 @@
+html {
+    background: #444;
+    color: #999;
+    text-align: center;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #333;
+    overflow: auto;
+}
+
+.navbar a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: grey;
+}
+
+.active {
+    background-color: #6c4fb0;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 1px;
+    padding: 40px;
+    cursor: pointer;
+}
+
+#gameR {
+    margin-top: 10%;
+    height: 70%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    padding-top: 20px;
+    /* float: right; */
+}
+
+button {
+    width: 100px;
+    font-size: large;
+    cursor: pointer;
+    background-color: #999;
+    border: none;
+    outline: none;
+}

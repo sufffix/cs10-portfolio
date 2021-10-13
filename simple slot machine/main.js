@@ -45,7 +45,6 @@ function spin() {
 function spin10() {
     for (let i = 1; i <= 10; i++) {
         spin();
-        console.log("spin");
     }
 }
 
@@ -120,7 +119,6 @@ function randomSlot() {
         score += 1000;
         score -= 20;
         scoreEl.innerHTML = score;
-        alert("Jackpot!");
     } else {
         score -= 20;
         scoreEl.innerHTML = score;

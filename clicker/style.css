@@ -50,7 +50,20 @@ img {
     background-color: #333;
     overflow-x: hidden;
     padding-top: 20px;
-    /* float: right; */
+}
+
+#gameL {
+    margin-top: 10%;
+    height: 70%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    padding-top: 5px;
+    display: none;
 }
 
 button {
@@ -60,4 +73,16 @@ button {
     background-color: #999;
     border: none;
     outline: none;
+}
+
+input {
+    width: 130px;
+    height: 30px;
+    background-color: #999;
+    border: none;
+    outline: none;
+}
+
+#inputScoreBtn {
+    font-size: medium;
 }

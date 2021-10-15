@@ -68,7 +68,7 @@ img {
 
 button {
     width: 100px;
-    font-size: large;
+    font-size: medium;
     cursor: pointer;
     background-color: #999;
     border: none;
@@ -81,8 +81,4 @@ input {
     background-color: #999;
     border: none;
     outline: none;
-}
-
-#inputScoreBtn {
-    font-size: medium;
 }

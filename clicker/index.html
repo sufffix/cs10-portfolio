@@ -13,7 +13,9 @@
     <div class="navbar">
         <a href="../index.html"><i class="fa fa-fw fa-home"></i> Home</a>
         <a href="../text adventure/index.html"><i class="fa fas-fw fa-i-cursor"></i> Text Adventure</a>
-        <a href="index.html"><i class="fa fas-fw fa-dice"></i></a>
+        <a href="../simple slot machine/index.html"><i class="fa fas-fw fa-dice"></i> Slot Machine</a>
+        <a class="active" href="index.html"><i class="fa fas-fw fa-cookie"></i></a>
+
 
 
         
@@ -36,14 +38,15 @@
 
     <div id="gameR">
         <button id="upgradeClicker" title="Cost: 50">Upgrade to Loaf</button>
-        <p></p>
         <button id="bkBtn" title="Cost: 15">Hire Baker's Kid</button>
-        <p></p>
-        <button id="hbBtn" title="Cost: 100">Hire Home Baker</button>
-        <p></p>
-        <button id="lbBtn" title="Cost: 1100">Hire Local Baker</button>
-        <p></p>
-        <button id="cfbBtn" title="Cost: 12000">Hire City Famous Baker</button>
+        <button id="hbBtn" title="Cost: 100" disabled>Hire Home Baker</button>
+        <button id="lbBtn" title="Cost: 1,100" disabled>Hire Local Baker</button>
+        <button id="cfbBtn" title="Cost: 12,000" disabled>Hire City Famous Baker</button>
+        <button id="lcoBtn" title="Cost: 130,000" disabled>Hire Local Chain Owner</button>
+        <button id="pcoBtn" title="Cost: 1,400,000" disabled>Hire Province Wide Chain Owner</button>
+        <button id="ccoBtn" title="Cost: 20,000,000" disabled>Hire Country Wide Chain Owner</button>
+        <button id="wcoBtn" title="Cost: 330,000,000" disabled>Hire Worldwide Chain Owner</button>
+        <button id="msbBtn" title="Cost: 330,000,000" disabled>Hire Michelin Star Baker</button>
     </div>
 
     <div id="gameL">
@@ -58,7 +61,11 @@
         <p>Home Bakers: <span id="hbPar">0</span></p>
         <p>Local Bakers: <span id="lbPar">0</span></p>
         <p>City Famous Bakers: <span id="cfbPar">0</span></p>
-
+        <p>Local Chain Owners: <span id="lcoPar">0</span></p>
+        <p>Province Wide Chain Owners: <span id="pcoPar">0</span></p>
+        <p>Country Wide Chain Owners: <span id="ccoPar">0</span></p>
+        <p>Worldwide Chain Owners: <span id="wcoPar">0</span></p>
+        <p>Michelin Star Bakers: <span id="msbPar">0</span></p>
     </div>
 
     <br>

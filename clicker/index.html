@@ -27,26 +27,32 @@
         <a style="float:right" href="../projects/trapezoid/index.html"><i class="fa fa-fw fa-area-chart"></i></a>
     </div>
 
-    <h1>Bakery Clicker</h1>
-    <h3>Basically a cookie clicker ripoff.</h3>
+    <h1>Cookie Clicker</h1>
+    <h3>Cookie clicker ripoff from scratch.</h3>
 
     <div id="game">
-        <img src="img/grain.png" id="clicker">
+        <img src="cookie.png" id="clicker">
 
         <p>Score: <span id="score">0</span></p>
     </div>
 
     <div id="gameR">
-        <button id="upgradeClicker" title="Cost: 50">Upgrade to Loaf</button>
-        <button id="bkBtn" title="Cost: 15">Hire Baker's Kid</button>
-        <button id="hbBtn" title="Cost: 100" disabled>Hire Home Baker</button>
-        <button id="lbBtn" title="Cost: 1,100" disabled>Hire Local Baker</button>
-        <button id="cfbBtn" title="Cost: 12,000" disabled>Hire City Famous Baker</button>
-        <button id="lcoBtn" title="Cost: 130,000" disabled>Hire Local Chain Owner</button>
-        <button id="pcoBtn" title="Cost: 1,400,000" disabled>Hire Province Wide Chain Owner</button>
-        <button id="ccoBtn" title="Cost: 20,000,000" disabled>Hire Country Wide Chain Owner</button>
-        <button id="wcoBtn" title="Cost: 330,000,000" disabled>Hire Worldwide Chain Owner</button>
-        <button id="msbBtn" title="Cost: 330,000,000" disabled>Hire Michelin Star Baker</button>
+        <h2>Employees</h2>
+        <button id="cursorBtn" title="Cost: 15">Buy Cursor</button>
+        <button id="grandmaBtn" title="Cost: 100" disabled>Buy Grandma</button>
+        <button id="farmBtn" title="Cost: 1,100" disabled>Buy Farm</button>
+        <button id="mineBtn" title="Cost: 12,000" disabled>Buy</button>
+        <hr>
+
+        <h2>Upgrades</h2>
+        <!-- clicker + cursor upgrades -->
+        <button id="rifBtn" class="upgrade" title="Cost: 100. Mouse and cursors are twice as efficient.">Buy Reinforced Index Finger</button>
+        <button id="ctpcBtn" class="upgrade" title="Cost: 500. Mouse and cursors are twice as efficient.">Buy Carpal Tunnel Prevention Cream</button>
+
+        <!-- grandma upgrades -->
+        <button id="ffgBtn" class="upgrade" title="Cost: 1000. Grandmas are twice as efficient.">Buy Rolling Pin</button>
+
+        <!--  -->
     </div>
 
     <div id="gameL">
@@ -57,21 +63,15 @@
     </div> 
 
     <div>
-        <p>Baker's Kids: <span id="bkPar">0</span></p>
-        <p>Home Bakers: <span id="hbPar">0</span></p>
-        <p>Local Bakers: <span id="lbPar">0</span></p>
-        <p>City Famous Bakers: <span id="cfbPar">0</span></p>
-        <p>Local Chain Owners: <span id="lcoPar">0</span></p>
-        <p>Province Wide Chain Owners: <span id="pcoPar">0</span></p>
-        <p>Country Wide Chain Owners: <span id="ccoPar">0</span></p>
-        <p>Worldwide Chain Owners: <span id="wcoPar">0</span></p>
-        <p>Michelin Star Bakers: <span id="msbPar">0</span></p>
+        <p>Cursors: <span id="cursorPar">0</span></p>
+        <p>Grandmas: <span id="grandmaPar">0</span></p>
+        <p>Farms: <span id="farmPar">0</span></p>
+        <p>Mines: <span id="minePar">0</span></p>
     </div>
 
     <br>
 
-    <div>Icons made by <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-
+    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     <script src="main.js"></script>
 </body>
 </html>

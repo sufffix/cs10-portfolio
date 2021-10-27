@@ -27,6 +27,14 @@
         <a style="float:right" href="../projects/trapezoid/index.html"><i class="fa fa-fw fa-area-chart"></i></a>
     </div>
 
+    <!-- not enough money notification (disabled by default) -->
+    <div id="moneyModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Not enough money!</p>
+        </div>
+    </div>
+
     <h1>Cookie Clicker</h1>
     <h3>Cookie clicker ripoff from scratch.</h3>
 
@@ -34,23 +42,25 @@
         <img src="cookie.png" id="clicker">
 
         <p>Score: <span id="score">0</span></p>
+        <hr>
+        <p>Cursors: <span id="cursorPar">0</span></p>
+        <p>Grandmas: <span id="grandmaPar">0</span></p>
+        <p>Farms: <span id="farmPar">0</span></p>
+        <p>Mines: <span id="minePar">0</span></p>
     </div>
 
     <div id="gameR">
-        <h2>Employees</h2>
-        <button id="cursorBtn" title="Cost: 15">Buy Cursor</button>
-        <button id="grandmaBtn" title="Cost: 100" disabled>Buy Grandma</button>
-        <button id="farmBtn" title="Cost: 1,100" disabled>Buy Farm</button>
-        <button id="mineBtn" title="Cost: 12,000" disabled>Buy</button>
+        <h2>Buildings</h2>
+        <button id="cursorBtn">Buy Cursor <br> Cost: <span id="cursorCost">15</span></button>
+        <button id="grandmaBtn" disabled>Buy Grandma <br> Cost: <span id="grandmaCost">100</span></button>
+        <button id="farmBtn" disabled>Buy Farm <br> Cost: <span id="farmCost">1,100</span></button>
+        <button id="mineBtn" disabled>Buy <br> Cost: <span id="mineCost">12,000</span></button>
         <hr>
 
         <h2>Upgrades</h2>
-        <!-- clicker + cursor upgrades -->
-        <button id="rifBtn" class="upgrade" title="Cost: 100. Mouse and cursors are twice as efficient.">Buy Reinforced Index Finger</button>
-        <button id="ctpcBtn" class="upgrade" title="Cost: 500. Mouse and cursors are twice as efficient.">Buy Carpal Tunnel Prevention Cream</button>
-
-        <!-- grandma upgrades -->
-        <button id="ffgBtn" class="upgrade" title="Cost: 1000. Grandmas are twice as efficient.">Buy Rolling Pin</button>
+        <button id="rifBtn" class="upgrade" title="Mouse and cursors are twice as efficient.">Buy Reinforced Index Finger<br>Cost: <span id="rifCost">100</span></button>
+        <button id="ctpcBtn" class="upgrade" title="Mouse and cursors are twice as efficient.">Buy Carpal Tunnel Prevention Cream<br>Cost: <span id="rifCost">500</span></button>
+        <button id="ffgBtn" class="upgrade" title="Grandmas are twice as efficient.">Buy Forwards From Grandma<br>Cost: <span id="rifCost">1000</span></button>
 
         <!--  -->
     </div>
@@ -63,15 +73,13 @@
     </div> 
 
     <div>
-        <p>Cursors: <span id="cursorPar">0</span></p>
-        <p>Grandmas: <span id="grandmaPar">0</span></p>
-        <p>Farms: <span id="farmPar">0</span></p>
-        <p>Mines: <span id="minePar">0</span></p>
+
     </div>
 
     <br>
 
     <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     <script src="main.js"></script>
+    <script src="lib.js"></script>
 </body>
 </html>

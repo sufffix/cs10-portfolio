@@ -20,20 +20,22 @@ mineBtn.onclick = function() {buyMine();}
 rifBtn.onclick = function() {buyRIF();}
 ctpcBtn.onclick = function() {buyCTPC();}
 ffgBtn.onclick = function() {buyFFG();}
+chBtn.onclick = function() {buyCH();}
+sgBtn.onclick = function() {buySG();}
 
 // give score for employees
-setInterval(function(){ // bakers kid function because i didnt want to use decimals in the one second function and im too lazy to find a better way
+setInterval(function(){ // cursor function because i didnt want to use decimals in the one second function and im too lazy to find a better way
     score += cursorNum * hasRIF * hasCTPC;
     scorePar.innerHTML = score.toLocaleString();
 }, 10000)
-setInterval(function(){ // same thing as bakers kid but for home bakers
+setInterval(function(){ // same thing as cursor but for grandmas
     score += grandmaNum * hasFFG;
     scorePar.innerHTML = score.toLocaleString();
 }, 1000)
 
 setInterval(function(){ // divide cps by 10 (fires 10 times / second)
-    score += farmNum;
-    score += mineNum * 5; 
+    score += farmNum * hasCH;
+    score += mineNum * hasSG * 5;
 
     scorePar.innerHTML = score.toLocaleString();
 }, 100);

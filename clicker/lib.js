@@ -9,26 +9,27 @@ var devMenuEl = document.getElementById("gameL");
 var scoreInput = document.getElementById("scoreInput");
 var clicker = document.getElementById("clicker");
 var inputScoreBtn = document.getElementById("inputScoreBtn");
-
+var cpsPar = document.getElementById("cps");
 
 // other variables
 var clickVal = 1;
 var score = 0;
 var shiftDown = false;
 var devMenuDisplay = "none";
+var cps = 0;
 
 // notification
 var modal = document.getElementById("moneyModal");
 var btn = document.getElementById("modalBtnTest");
 var span = document.getElementsByClassName("close")[0];
 
-function noMoney() {
+function noMoney() { // opens notification box
     modal.style.display = "block";
 }
-span.onclick = function() {
+span.onclick = function() { // closes when you press the x
     modal.style.display = "none";
 }
-window.onclick = function(event) {
+window.onclick = function(event) { // lets you click anywhere outside of the box to close notif
     if (event.target == modal) {
         modal.style.display = "none";
     }
@@ -66,31 +67,42 @@ function inputScore() { // input score from dev menu
     scorePar.innerHTML = score.toLocaleString();
 }
 
-function give10Workers() {
-    for (let i = 1; i <= 10; i++) {
-        cursorNum++;
-        cursorPar.innerHTML = cursorNum;
-        cursorCost = Math.round(cursorCost * 1.15);
-        cursorCostPar.innerHTML = cursorCost.toLocaleString();
-        cursorBtn.disabled = false;
+// function give10Workers() { currently disabled due to variable issues 
+//     for (let i = 1; i <= 10; i++) {
+//         cursorNum++;
+//         cursorPar.innerHTML = cursorNum;
+//         cursorCost = Math.round(cursorCost * 1.15);
+//         cursorCostPar.innerHTML = cursorCost.toLocaleString();
+//         cursorBtn.disabled = false;
 
-        grandmaNum++;
-        grandmaPar.innerHTML = grandmaNum;
-        grandmaCost = Math.round(grandmaCost * 1.15);
-        grandmaCostPar.innerHTML = grandmaCost.toLocaleString();
-        grandmaBtn.disabled = false;
+//         grandmaNum++;
+//         grandmaPar.innerHTML = grandmaNum;
+//         grandmaCost = Math.round(grandmaCost * 1.15);
+//         grandmaCostPar.innerHTML = grandmaCost.toLocaleString();
+//         grandmaBtn.disabled = false;
 
-        farmNum++;
-        farmPar.innerHTML = farmNum;
-        farmCost = Math.round(farmCost * 1.15);
-        farmCostPar.innerHTML = farmCost.toLocaleString();
-        farmBtn.disabled = false;
+//         farmNum++;
+//         farmPar.innerHTML = farmNum;
+//         farmCost = Math.round(farmCost * 1.15);
+//         farmCostPar.innerHTML = farmCost.toLocaleString();
+//         farmBtn.disabled = false;
 
-        mineNum++;
-        minePar.innerHTML = mineNum;
-        mineCost = Math.round(mineCost * 1.15);
-        mineCostPar.innerHTML = mineCost.toLocaleString();
-        mineBtn.disabled = false;
+//         mineNum++;
+//         minePar.innerHTML = mineNum;
+//         mineCost = Math.round(mineCost * 1.15);
+//         mineCostPar.innerHTML = mineCost.toLocaleString();
+//         mineBtn.disabled = false;
+//     }
+// }
+
+function getCPS() { // get cps and display
+    cps = (cursorNum * hasRIF * hasCTPC / 10) + (grandmaNum * hasFFG) + (farmNum * hasCH * 10) + (mineNum * hasSG * 50); 
+    cpsPar.innerHTML = cps.toLocaleString();
+}
+
+function enableUpgrade(num, reqnum, upg, upbtn) { // enable upgrade buttons when you meet the reqs
+    if (num >= reqnum && upg == 1) {
+        upbtn.style.display = "block";
     }
 }
 
@@ -102,7 +114,7 @@ var cursorPar = document.getElementById("cursorPar");
 var cursorCostPar = document.getElementById("cursorCost");
 var cursorNum = 0;
 var cursorCost = 15;
-function buyCursor() { // buy 1 
+function buyCursor() { // buy 1 cursor
     if (score >= cursorCost) {
         score -= cursorCost;
         scorePar.innerHTML = score.toLocaleString();
@@ -110,11 +122,9 @@ function buyCursor() { // buy 1
         cursorPar.innerHTML = cursorNum;
         cursorCost = Math.round(cursorCost * 1.15);
         cursorCostPar.innerHTML = cursorCost.toLocaleString();
-        if (cursorNum >= 1) {
-            rifBtn.style.display = "block";
-            ctpcBtn.style.display = "block";
-
-        }
+        enableUpgrade(cursorNum,1,hasRIF,rifBtn);
+        enableUpgrade(cursorNum,1,hasCTPC,ctpcBtn);
+        getCPS();
         if (grandmaBtn.disabled == true) {grandmaBtn.disabled = false};
     } else {
         noMoney();
@@ -127,7 +137,7 @@ var grandmaPar = document.getElementById("grandmaPar");
 var grandmaCostPar = document.getElementById("grandmaCost");
 var grandmaNum = 0;
 var grandmaCost = 100;
-function buyGrandma() { // buy 1 
+function buyGrandma() { // buy 1 grandma
     if (score >= grandmaCost) {
         score -= grandmaCost;
         scorePar.innerHTML = score.toLocaleString();
@@ -135,9 +145,8 @@ function buyGrandma() { // buy 1
         grandmaPar.innerHTML = grandmaNum;
         grandmaCost = Math.round(grandmaCost * 1.15);
         grandmaCostPar.innerHTML = grandmaCost.toLocaleString();
-        if (grandmaNum >= 1) {
-            ffgBtn.style.display = "block";
-        }
+        enableUpgrade(grandmaNum,1,hasFFG,ffgBtn);
+        getCPS();
         if (farmBtn.disabled == true) {farmBtn.disabled = false};
     } else {
         noMoney();
@@ -150,7 +159,7 @@ var farmPar = document.getElementById("farmPar");
 var farmCostPar = document.getElementById("farmCost");
 var farmNum = 0;
 var farmCost = 1100;
-function buyFarm() { // buy 
+function buyFarm() { // buy 1 farm
     if (score >= farmCost) {
         score -= farmCost;
         scorePar.innerHTML = score.toLocaleString();
@@ -158,6 +167,8 @@ function buyFarm() { // buy
         farmPar.innerHTML = farmNum;
         farmCost = Math.round(farmCost * 1.15);
         farmCostPar.innerHTML = farmCost.toLocaleString();
+        enableUpgrade(farmNum,1,hasCH,chBtn);
+        getCPS();
         if (mineBtn.disabled == true) {mineBtn.disabled = false};
     } else {
         noMoney();
@@ -170,7 +181,7 @@ var minePar = document.getElementById("minePar");
 var mineCostPar = document.getElementById("mineCost");
 var mineNum = 0;
 var mineCost = 12000;
-function buyMine() { // buy 1 
+function buyMine() { // buy 1 mine
     if (score >= mineCost) {
         score -= mineCost;
         scorePar.innerHTML = score.toLocaleString();
@@ -178,11 +189,15 @@ function buyMine() { // buy 1
         minePar.innerHTML = mineNum;
         mineCost = Math.round(mineCost * 1.15);
         mineCostPar.innerHTML = mineCost.toLocaleString();
-        // if (lcoBtn.disabled == true) {lcoBtn.disabled = false};
+        enableUpgrade(mineNum,1,hasSG,sgBtn);
+        getCPS();
+        // if (factoryBtn.disabled == true) {factoryBtn.disabled = false};
     } else {
         noMoney();
     }
 }
+
+
 
 // upgrades
 
@@ -193,7 +208,8 @@ function buyRIF() {
     if (score >= 100) {
         score -= 100;
         hasRIF = 2;
-        rifBtn.disabled = true;
+        getCPS();
+        rifBtn.style.display = "none";
     } else {
         noMoney();
     }
@@ -206,7 +222,8 @@ function buyCTPC() {
     if (score >= 500) {
         score -= 500;
         hasCTPC = 2;
-        ctpcBtn.disabled = true;
+        getCPS();
+        ctpcBtn.style.display = "none";
     } else {
         noMoney();
     }
@@ -219,9 +236,37 @@ function buyFFG() {
     if (score >= 1000) {
         score -= 1000;
         hasFFG = 2;
-        ffgBtn.disabled = true;
+        getCPS();
+        ffgBtn.style.display = "none";
     } else {
         noMoney();
     }
 }
 
+// buy cheap hoes
+var chBtn = document.getElementById("chBtn");
+var hasCH = 1;
+function buyCH() {
+    if (score >= 11000) {
+        score -= 11000;
+        hasCH = 2;
+        getCPS();
+        chBtn.style.display = "none";
+    } else {
+        noMoney();
+    }
+}
+
+// buy sugar gas
+var sgBtn = document.getElementById("sgBtn");
+var hasSG = 1;
+function buySG() {
+    if (score >= 120000) {
+        score -= 120000;
+        hasSG = 2;
+        getCPS();
+        sgBtn.style.display = "none";
+    } else {
+        noMoney();
+    }
+}

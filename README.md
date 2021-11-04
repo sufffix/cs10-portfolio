@@ -1,3 +1,3 @@
 # cs10-portfolio
 
-portfolio of a bunch of work for cs10
+portfolio website with a bunch of work for cs10

@@ -16,6 +16,8 @@ grandmaBtn.onclick = function() {buyGrandma();}
 farmBtn.onclick = function() {buyFarm();}
 mineBtn.onclick = function() {buyMine();}
 factoryBtn.onclick = function() {buyFactory();}
+bankBtn.onclick = function() {buyBank();}
+templeBtn.onclick = function() {buyTemple();}
 
 // upgrade click listeners
 rifBtn.onclick = function() {buyRIF();}
@@ -33,21 +35,31 @@ mdBtn.onclick = function() {buyMD();}
 scbBtn.onclick = function() {buySCB();}
 elBtn.onclick = function() {buyEL();}
 
+ttBtn.onclick = function() {buyTT();}
+srccBtn.onclick = function() {buySRCC();}
+
+giBtn.onclick = function() {buyGI();}
+sBtn.onclick = function() {buyS();}
+
+gCookieEl.onclick = function() {goldCookieClicked();}
+
 
 // give score for employees
 setInterval(function(){ // cursor function because i didnt want to use decimals in the one second function and im too lazy to find a better way
-    score += cursorNum * hasRIF * hasCTPC;
+    score += cursorNum * hasRIF * hasCTPC * frenzy;
     updateScore();
 }, 10000)
 setInterval(function(){ // same thing as cursor but for grandmas
-    score += grandmaNum * hasFFG * hasSPRP;
+    score += grandmaNum * hasFFG * hasSPRP * frenzy;
     updateScore();
 }, 1000)
 
 setInterval(function(){ // divide cps by 10 (fires 10 times / second)
-    score += farmNum * hasCH * hasF;
-    score += mineNum * hasSG * hasMD * 5;
-    score += factoryNum * hasSCB * hasEL * 26;
+    score += farmNum * hasCH * hasF * frenzy;
+    score += mineNum * hasSG * hasMD * 5 * frenzy;
+    score += factoryNum * hasSCB * hasEL * 26 * frenzy;
+    score += bankNum * hasTT * hasSRCC * 140 * frenzy;
+    score += templeNum * hasGI * hasS * 780 * frenzy;
 
     updateScore();
 }, 100);

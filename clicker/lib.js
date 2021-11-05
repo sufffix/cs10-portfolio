@@ -96,11 +96,13 @@ function inputScore() { // input score from dev menu
 // }
 
 function getCPS() { // get cps and display
-    cps = (cursorNum * hasRIF * hasCTPC / 10) + 
-    (grandmaNum * hasFFG * hasSPRP) + 
-    (farmNum * hasCH * hasF * 10) + 
-    (mineNum * hasSG * hasMD * 50) + 
-    (factoryNum * hasSCB * hasEL * 260); 
+    cps = (cursorNum * hasRIF * hasCTPC / 10 * frenzy) + 
+    (grandmaNum * hasFFG * hasSPRP * frenzy) + 
+    (farmNum * hasCH * hasF * 10 * frenzy) + 
+    (mineNum * hasSG * hasMD * 50 * frenzy) + 
+    (factoryNum * hasSCB * hasEL * 260 * frenzy) + 
+    (bankNum * hasTT * hasSRCC * 1400 * frenzy) + 
+    (templeNum * hasGI * hasS * 7800 * frenzy); 
     cpsPar.innerHTML = cps.toLocaleString();
 }
 
@@ -110,9 +112,9 @@ function updateScore() {
     scorePar.innerHTML = score.toLocaleString();
 }
 
-function enableUpgrade(num, reqnum, upg, upbtn) { // enable upgrade buttons when you meet the reqs
-    if (num >= reqnum && upg == 1) {
-        upbtn.style.display = "block";
+function enableUpgrade(num, reqNum, hasUpgrade, upgradeBtn) { // enable raderade buttons when you meet the requirements
+    if (num >= reqNum && hasUpgrade == 1) {
+        upgradeBtn.style.display = "block";
     }
 }
 
@@ -226,6 +228,52 @@ function buyFactory() { // buy 1 factory
         factoryCostPar.innerHTML = factoryCost.toLocaleString();
         enableUpgrade(factoryNum,1,hasSCB,scbBtn);
         enableUpgrade(factoryNum,5,hasEL,elBtn);
+        getCPS();
+        if (bankBtn.disabled == true) {bankBtn.disabled = false};
+    } else {
+        noMoney();
+    }
+}
+
+// bank
+var bankBtn = document.getElementById("bankBtn"); // variables
+var bankPar = document.getElementById("bankPar");
+var bankCostPar = document.getElementById("bankCost");
+var bankNum = 0;
+var bankCost = 1400000;
+function buyBank() { // buy 1 bank
+    if (score >= bankCost) {
+        score -= bankCost;
+        updateScore();
+        bankNum++;
+        bankPar.innerHTML = bankNum;
+        bankCost = Math.round(bankCost * 1.15);
+        bankCostPar.innerHTML = bankCost.toLocaleString();
+        enableUpgrade(bankNum,1,hasTT,ttBtn);
+        enableUpgrade(bankNum,5,hasSRCC,srccBtn);
+        getCPS();
+        if (templeBtn.disabled == true) {templeBtn.disabled = false};
+    } else {
+        noMoney();
+    }
+}
+
+// temple
+var templeBtn = document.getElementById("templeBtn"); // variables
+var templePar = document.getElementById("templePar");
+var templeCostPar = document.getElementById("templeCost");
+var templeNum = 0;
+var templeCost = 20000000;
+function buyTemple() { // buy 1 temple
+    if (score >= templeCost) {
+        score -= templeCost;
+        updateScore();
+        templeNum++;
+        templePar.innerHTML = templeNum;
+        templeCost = Math.round(templeCost * 1.15);
+        templeCostPar.innerHTML = templeCost.toLocaleString();
+        enableUpgrade(templeNum,1,hasGI,giBtn);
+        enableUpgrade(templeNum,5,hasS,sBtn);
         getCPS();
         // if (factoryBtn.disabled == true) {factoryBtn.disabled = false};
     } else {
@@ -378,4 +426,90 @@ function buyEL() {
     } else {
         noMoney();
     }
+}
+
+// bank upgrades
+// buy taller tellers
+var ttBtn = document.getElementById("ttBtn");
+var hasTT = 1;
+function buyTT() {
+    if (score >= 14000000) {
+        score -= 14000000;
+        hasTT = 2;
+        getCPS();
+        ttBtn.style.display = "none";
+    } else {
+        noMoney();
+    }
+}
+
+// buy scissor resistant credit cards
+var srccBtn = document.getElementById("srccBtn");
+var hasSRCC = 1;
+function buySRCC() {
+    if (score >= 70000000) {
+        score -= 70000000;
+        hasSRCC = 2;
+        getCPS();
+        srccBtn.style.display = "none";
+    } else {
+        noMoney();
+    }
+}
+
+// temple upgrades
+// buy golden idols
+var giBtn = document.getElementById("giBtn");
+var hasGI = 1;
+function buyGI() {
+    if (score >= 200000000) {
+        score -= 200000000;
+        hasGI = 2;
+        getCPS();
+        giBtn.style.display = "none";
+    } else {
+        noMoney();
+    }
+}
+
+// buy sacrifices
+var sBtn = document.getElementById("sBtn");
+var hasS = 1;
+function buyS() {
+    if (score >= 1000000000) {
+        score -= 1000000000;
+        hasS = 2;
+        getCPS();
+        sBtn.style.display = "none";
+    } else {
+        noMoney();
+    }
+}
+
+// golden cookie
+var gCookieEl = document.getElementById("gcookie");
+var frenzy = 1;
+function goldCookie() {
+    gCookieEl.style.display = "block";
+    gCookieEl.style.top = Math.floor(Math.random()*90+5)+'%';
+    gCookieEl.style.left = Math.floor(Math.random()*90+5)+'%';
+    setTimeout(function(){
+        gCookieEl.style.display = "none";
+    }, 13000)
+    var min = 300, 
+    max = 900;
+    var rand = Math.floor(Math.random() * (max - min + 1) + min);
+    console.log("golden cookie after " + rand + " seconds.");
+    setTimeout(goldCookie, rand * 1000);
+}
+goldCookie();
+
+function goldCookieClicked() {
+    frenzy = 7;
+    gCookieEl.style.display = "none";
+    getCPS();
+    setTimeout(function(){
+        frenzy = 1;
+        getCPS();
+    }, 77000);
 }

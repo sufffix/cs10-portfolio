@@ -41,11 +41,12 @@ srccBtn.onclick = function() {buySRCC();}
 giBtn.onclick = function() {buyGI();}
 sBtn.onclick = function() {buyS();}
 
+// golden cookie click listener
 gCookieEl.onclick = function() {goldCookieClicked();}
 
 
 // give score for employees
-setInterval(function(){ // cursor function because i didnt want to use decimals in the one second function and im too lazy to find a better way
+setInterval(function(){ // cursor function for less decimals
     score += cursorNum * hasRIF * hasCTPC * frenzy;
     updateScore();
 }, 10000)

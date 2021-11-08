@@ -36,6 +36,10 @@ window.onclick = function(event) { // lets you click anywhere outside of the box
 }
 
 // misc functions
+
+function getRandomInt(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 function onClick() { // main clicker handler
     score += clickVal * hasRIF * hasCTPC;
     updateScore();
@@ -112,7 +116,7 @@ function updateScore() {
     scorePar.innerHTML = score.toLocaleString();
 }
 
-function enableUpgrade(num, reqNum, hasUpgrade, upgradeBtn) { // enable raderade buttons when you meet the requirements
+function enableUpgrade(num, reqNum, hasUpgrade, upgradeBtn) { // enable upgrade buttons when you meet the requirements
     if (num >= reqNum && hasUpgrade == 1) {
         upgradeBtn.style.display = "block";
     }
@@ -488,28 +492,64 @@ function buyS() {
 
 // golden cookie
 var gCookieEl = document.getElementById("gcookie");
+var gCookieText = document.getElementById("gcookieText");
 var frenzy = 1;
+let gcookieTop; let gcookieLeft;
 function goldCookie() {
+    gcookieTop = getRandomInt(1, 90) + '%';
+    gcookieLeft = getRandomInt(1, 90) + '%';
+
     gCookieEl.style.display = "block";
-    gCookieEl.style.top = Math.floor(Math.random()*90+5)+'%';
-    gCookieEl.style.left = Math.floor(Math.random()*90+5)+'%';
+    gCookieEl.style.top = gcookieTop;
+    gCookieEl.style.left = gcookieLeft;
+    gCookieText.style.top = gcookieTop;
+    gCookieText.style.left = gcookieLeft;
+
     setTimeout(function(){
         gCookieEl.style.display = "none";
     }, 13000)
-    var min = 300, 
-    max = 900;
-    var rand = Math.floor(Math.random() * (max - min + 1) + min);
-    console.log("golden cookie after " + rand + " seconds.");
+    let rand = getRandomInt(300, 900);
     setTimeout(goldCookie, rand * 1000);
 }
-goldCookie();
+setTimeout(goldCookie, 1);
 
 function goldCookieClicked() {
-    frenzy = 7;
-    gCookieEl.style.display = "none";
-    getCPS();
-    setTimeout(function(){
-        frenzy = 1;
+    goldCookieText();
+    let i = getRandomInt(0, 100);
+    console.log(i);
+    if (i < 47) { // frenzy
+        gCookieText.innerHTML = "Frenzy! x7 cookie production for 77 seconds."
+        frenzy = 7;
         getCPS();
-    }, 77000);
+        setTimeout(function(){
+            frenzy = 1;
+            getCPS();
+            console.log("frenzy over");
+        }, 77000);
+    } else if (i < 94) { // lucky
+        if ((cps * 900 + 13) < (score * 0.15 + 13)) {
+            gCookieText.innerHTML = "Lucky! +" + (cps * 900 + 13).toLocaleString() + " cookies."
+            score += cps * 900 + 13
+        } else {
+            gCookieText.innerHTML = "Lucky! +" + (score * 0.15 + 13).toLocaleString() + " cookies."
+            score += score * 0.15 + 13
+        }
+        updateScore();
+    } else if (i > 94) { // click frenzy
+        gCookieText.innerHTML = "Click Frenzy! x777 cookies per click for 13 seconds."
+        clickVal *= 777;
+        setTimeout(function(){
+            clickVal /= 777;
+            console.log("click frenzy over");
+        }, 13000);
+    }
+    gCookieEl.style.display = "none";
+}
+
+function goldCookieText() {
+    gCookieText.style.display = "block";
+    setTimeout(function(){
+        gCookieText.style.display = "none";
+        gCookieText.innerHTML = "";
+    }, 3000);
 }

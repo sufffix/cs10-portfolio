@@ -78,9 +78,20 @@ body {
     z-index: 1;
     width: 50px;
     height: auto;
+    top: 0%;
+    left: 0%;
     position: fixed;
     display: none;
     cursor: pointer;    
+}
+
+#gcookieText {
+    z-index: 2;
+    top: 0%;
+    left: 0%;
+    position: fixed;
+    color: gold;
+    display: none;
 }
 
 #gameR {

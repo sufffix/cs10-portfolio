@@ -66,6 +66,10 @@ body {
     cursor: pointer;
 }
 
+#gameBottom {
+    overflow: auto;
+}
+
 #clicker {
     width: 200px;
     height: 200px;
